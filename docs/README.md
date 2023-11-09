@@ -7,6 +7,10 @@
 > 12월 N일에 사용자가 우테코 식당에 방문하기 위해 예약을 하려고 한다.
 > 주문 정보(음식 메뉴, 주문 수량)를 입력 했을 때, 사용자는 어떤 이벤트 혜택을 얻을 수 있나?
 
+# 설계도
+
+![image](https://github.com/hwinkr/javascript-christmas-6-hwinkr/assets/68489467/5b1cea90-4e3b-451b-9b5f-11595147ebe1)
+
 # Domain
 
 ## 1. `Menu`
