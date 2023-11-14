@@ -31,11 +31,11 @@ export default class Order {
   }
 
   calculateTotalAmount() {
-    const totalPrice = this.#menuList.reduce(
+    const totalAmount = this.#menuList.reduce(
       (accPrice, menu) => accPrice + menu.calculateMenuAmount(),
       0,
     );
-    return totalPrice;
+    return totalAmount;
   }
 
   calculateTotalDiscountAmount(discountType) {
