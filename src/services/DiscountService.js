@@ -1,6 +1,7 @@
 import { BENEFIT_TYPE, DISCOUNT_AMOUNT, EVENT_RULES } from '../constants/christmas-event.js';
 import Order from '../domains/Order.js';
 import VisitDate from '../domains/VisitDate.js';
+import deepFreeze from '../utils/deepFreeze.js';
 
 export default class DiscountService {
   #visitDate;
@@ -88,6 +89,6 @@ export default class DiscountService {
 
   getDicsountInfo() {
     this.#updateDiscountInfo();
-    return this.#discountInfo;
+    return deepFreeze(this.#discountInfo);
   }
 }
