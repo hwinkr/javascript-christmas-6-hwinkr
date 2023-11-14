@@ -2,13 +2,15 @@ import deepFreeze from '../utils/deepFreeze.js';
 
 export const EVENT_MESSAGES = deepFreeze({
   helloMessage: '안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.',
+  eventPreview: '12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!',
+  belowMinimumOrder: '(총주문 금액이 10,000원 이하일 경우 이벤트가 적용되지 않습니다.)',
   orderMenu: '<주문 메뉴>',
   orderAmountBeforeDiscount: '<할인 전 총주문 금액>',
   giftMenu: '<증정 메뉴>',
   benefits: '<혜택 내역>',
   totalBenefitAmount: '<총혜택 금액>',
   orderAmountAfterDiscount: '<할인 후 예상 결제 금액>',
-  eventBedge: '<12월 이벤트 배지>',
+  eventBadge: '<12월 이벤트 배지>',
   nothing: '없음',
 });
 
@@ -60,14 +62,14 @@ export const EVENT_RULES = deepFreeze({
   validOrderFormat: /^([가-힣\s]*-(0[1-9]|[1-9]\d*)\s*,\s*)*([가-힣\s]*-(0[1-9]|[1-9]\d*))$/,
 });
 
-export const BEDGES = deepFreeze({
+export const BADGES = deepFreeze({
   star: '별',
   tree: '트리',
   santa: '산타',
   nothing: '없음',
 });
 
-export const BEDGES_THRESHOLDS = deepFreeze({
+export const BADGES_THRESHOLDS = deepFreeze({
   star: 5_000,
   tree: 10_000,
   santa: 20_000,
