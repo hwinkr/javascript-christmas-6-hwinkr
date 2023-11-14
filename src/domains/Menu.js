@@ -4,6 +4,7 @@ import {
   MENU_LIST,
   DISCOUNT_AMOUNT,
 } from '../constants/christmas-event.js';
+import deepFreeze from '../utils/deepFreeze.js';
 
 export default class Menu {
   #name;
@@ -68,9 +69,9 @@ export default class Menu {
   }
 
   getMenuInfo() {
-    return {
+    return deepFreeze({
       name: this.#name,
       quantity: this.#quantity,
-    };
+    });
   }
 }
