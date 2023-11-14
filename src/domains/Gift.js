@@ -1,32 +1,37 @@
 import { BENEFIT_TYPE, GIFT } from '../constants/christmas-event.js';
+import deepFreeze from '../utils/deepFreeze.js';
 
 export default class Gift {
   #giftInfo;
 
-  constructor() {
-    this.#giftInfo = null;
+  constructor(orderAmount) {
+    this.#giftInfo = this.#setGiftInfo(orderAmount);
   }
 
-  #isEligibleGetGift(totalOrderPrice) {
-    return totalOrderPrice >= GIFT.threshold;
+  #isEligibleGetGift(orderAmount) {
+    return orderAmount >= GIFT.threshold;
+  }
+
+  #setGiftInfo(orderAmount) {
+    const { name } = GIFT;
+    const eligibleGetGift = this.#isEligibleGetGift(orderAmount);
+    const quantity = GIFT.quantity(eligibleGetGift);
+    const giftInfo = { name, quantity };
+
+    return giftInfo;
   }
 
   getGiftAmount() {
     return this.#giftInfo.quantity * GIFT.price;
   }
 
-  getGift(totalOrderPrice) {
-    const { name } = GIFT;
-    const eligibleGetGift = this.#isEligibleGetGift(totalOrderPrice);
-    const quantity = GIFT.quantity(eligibleGetGift);
-    this.#giftInfo = { name, quantity };
-
-    return this.#giftInfo;
+  getInfo() {
+    return deepFreeze(this.#giftInfo);
   }
 
-  getGiftEventInfo() {
+  getEventInfo() {
     const giftAmount = this.getGiftAmount();
-    const giftInfo = { [BENEFIT_TYPE.giftEvent]: giftAmount };
-    return giftInfo;
+    const giftEventInfo = { [BENEFIT_TYPE.giftEvent]: giftAmount };
+    return deepFreeze(giftEventInfo);
   }
 }
