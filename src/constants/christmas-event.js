@@ -14,10 +14,12 @@ export const EVENT_MESSAGES = deepFreeze({
   nothing: '없음',
 });
 
+export const ERROR_MESSAGE_PREFIX = '[ERROR]';
+
 export const ERROR_MESSAGES = deepFreeze({
-  invalidDate: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
-  invalidOrder: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
-  onlyBeverageOrder: '[ERROR] 음료만 주문할 수 없습니다. 다른 메뉴를 추가해주세요.',
+  invalidDate: '유효하지 않은 날짜입니다. 다시 입력해 주세요.',
+  invalidOrder: '유효하지 않은 주문입니다. 다시 입력해 주세요.',
+  onlyBeverageOrder: '음료만 주문할 수 없습니다. 다른 메뉴를 추가해주세요.',
 });
 
 export const INPUT_QUERYS = deepFreeze({
