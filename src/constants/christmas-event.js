@@ -35,7 +35,7 @@ export const MENU_TYPE = deepFreeze({
 
 export const MENU_LIST = deepFreeze([
   { type: MENU_TYPE.appetizer, name: '양송이수프', price: 6_000 },
-  { type: MENU_TYPE.appetizer, name: '타파스', price: 5_000 },
+  { type: MENU_TYPE.appetizer, name: '타파스', price: 5_500 },
   { type: MENU_TYPE.appetizer, name: '시저샐러드', price: 8_000 },
 
   { type: MENU_TYPE.main, name: '티본스테이크', price: 55_000 },
