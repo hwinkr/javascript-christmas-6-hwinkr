@@ -5,6 +5,7 @@ import {
   MENU_TYPE,
   SEPERATORS,
 } from '../constants/christmas-event.js';
+import InvalidOrderException from '../exceptions/InvalidOrderException.js';
 
 export default class OrderValidator {
   static #getMenuNameList(order) {
@@ -41,35 +42,35 @@ export default class OrderValidator {
 
   static #validateOrderformat(order) {
     if (!OrderValidator.#isValidOrderformat(order)) {
-      throw new Error(ERROR_MESSAGES.invalidOrder);
+      throw new InvalidOrderException(ERROR_MESSAGES.invalidOrder);
     }
   }
 
   static #validateMenuExistence(order) {
     const menuNameList = OrderValidator.#getMenuNameList(order);
     if (!menuNameList.every((menuName) => !!OrderValidator.#findMenu(menuName))) {
-      throw new Error(ERROR_MESSAGES.invalidOrder);
+      throw new InvalidOrderException(ERROR_MESSAGES.invalidOrder);
     }
   }
 
   static #validateMenuUniquness(order) {
     const menuNameList = OrderValidator.#getMenuNameList(order);
     if (menuNameList.length !== new Set(menuNameList).size) {
-      throw new Error(ERROR_MESSAGES.invalidOrder);
+      throw new InvalidOrderException(ERROR_MESSAGES.invalidOrder);
     }
   }
 
   static #validateOnlyBeverageOrder(order) {
     const menuNameList = OrderValidator.#getMenuNameList(order);
     if (menuNameList.every((menuName) => this.#isBeverageType(menuName))) {
-      throw new Error(ERROR_MESSAGES.onlyBeverageOrder);
+      throw new InvalidOrderException(ERROR_MESSAGES.onlyBeverageOrder);
     }
   }
 
   static #validateTotalOrderQuantity(order) {
     const totalOrderQuantity = OrderValidator.#calculateOrderQuantity(order);
     if (totalOrderQuantity > EVENT_RULES.maxOrderQuantity) {
-      throw new Error(ERROR_MESSAGES.invalidOrder);
+      throw new InvalidOrderException(ERROR_MESSAGES.onlyOrderBeverage);
     }
   }
 
