@@ -6,6 +6,7 @@ import {
   SPECIAL_DISCOUNT_DATE,
   WEEKEND,
 } from '../constants/christmas-event.js';
+import InvalidDateException from '../exceptions/InvalidDateException.js';
 
 export default class VisitDate {
   #date;
@@ -17,13 +18,13 @@ export default class VisitDate {
 
   #validateDateType(date) {
     if (typeof date !== 'number' || Number.isNaN(date)) {
-      throw new Error(ERROR_MESSAGES.invalidDate);
+      throw new InvalidDateException(ERROR_MESSAGES.invalidDate);
     }
   }
 
   #validateDateRange(date) {
     if (date < EVENT_RULES.startDay || date > EVENT_RULES.endDay) {
-      throw new Error(ERROR_MESSAGES.invalidDate);
+      throw new InvalidDateException(ERROR_MESSAGES.invalidDate);
     }
   }
 
